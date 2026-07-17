@@ -1,0 +1,33 @@
+# Maven
+**/target/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# Maven Wrapper
+**/.mvn/wrapper/maven-wrapper.jar
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local configuration
+**/*-dev.properties
+**/application-dev.properties
+
+# Environment files
+.env
+.env.*
+
+# Secrets
+**/application-local.properties
