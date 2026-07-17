@@ -133,7 +133,6 @@ AI-Fitness-Tracker
 ├── ActivityService
 ├── AIService
 ├── WaterService
-└── Frontend (React)
 ```
 
 ---
