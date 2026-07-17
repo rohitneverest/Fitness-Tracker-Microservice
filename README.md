@@ -2,26 +2,24 @@
 
 An AI-powered Fitness Tracker built using **Spring Boot Microservices**, **React**, **Keycloak OAuth2**, **RabbitMQ**, **MongoDB**, **MySQL**, and **Large Language Models (LLMs)** to provide personalized fitness recommendations.
 
+
 <img width="1920" height="1007" alt="Screenshot (202)" src="https://github.com/user-attachments/assets/3a40504c-8753-4a37-ac44-d96af80bba40" />
+
+---
 
 <img width="1920" height="889" alt="Screenshot (198)" src="https://github.com/user-attachments/assets/695b614c-4861-466c-b753-d0650495271a" />
 
+---
+
 <img width="1920" height="908" alt="Screenshot (199)" src="https://github.com/user-attachments/assets/2570261a-794f-4aa1-983f-2c0fd81f826a" />
+
+---
 
 <img width="1920" height="901" alt="Screenshot (200)" src="https://github.com/user-attachments/assets/73e44e1b-a301-40ac-8f98-828025f4d4bd" />
 
+---
+
 <img width="1920" height="897" alt="Screenshot (201)" src="https://github.com/user-attachments/assets/aafefcc0-bf68-44d3-b0b8-afd21c7bd7de" />
-
-
-
-
-
-
-
-
-
-
-
 
 
 ---
