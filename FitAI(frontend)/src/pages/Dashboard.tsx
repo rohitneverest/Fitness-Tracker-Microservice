@@ -7,12 +7,12 @@ import { Flame, Footprints, Dumbbell, Droplets } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 import WaterTracker from "../components/WaterTracker";
-import { useWater } from "../hooks/useWaterTracker";
+import { useWaterTracker } from "../hooks/useWaterTracker";
 
 function Dashboard() {
   const { darkMode } = useTheme();
   const { totalActivities, totalDuration, totalCalories } = useDashboardStats();
-  const { water } = useWater();
+  const { water } = useWaterTracker();
   return (
     <div>
       <h1
