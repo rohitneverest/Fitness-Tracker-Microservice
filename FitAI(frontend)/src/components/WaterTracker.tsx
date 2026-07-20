@@ -1,9 +1,10 @@
 import { Droplets, Minus, Plus } from "lucide-react";
-import { useWater } from "../hooks/useWaterTracker";
+import { useWaterTracker } from "../hooks/useWaterTracker";
 import { useTheme } from "../context/ThemeContext";
 
 function WaterTracker() {
-  const { water, goal, percent, loading, addWater, removeWater } = useWater();
+  const { water, goal, percent, loading, addWater, removeWater } =
+    useWaterTracker();
   const { darkMode } = useTheme();
 
   if (loading) {
