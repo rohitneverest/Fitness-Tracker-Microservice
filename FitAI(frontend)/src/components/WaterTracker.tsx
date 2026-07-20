@@ -1,5 +1,5 @@
 import { Droplets, Minus, Plus } from "lucide-react";
-import { useWater } from "../hooks/useWater";
+import { useWater } from "../hooks/useWaterTracker";
 import { useTheme } from "../context/ThemeContext";
 
 function WaterTracker() {

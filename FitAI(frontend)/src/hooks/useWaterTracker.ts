@@ -4,7 +4,7 @@ import { getTodayWater, saveWater } from "../services/waterService";
 
 const GOAL = 3000;
 
-export function useWater() {
+export function useWaterTracker() {
   const queryClient = useQueryClient();
 
   const keycloakId = keycloak.tokenParsed?.sub!;

@@ -7,7 +7,7 @@ import { Flame, Footprints, Dumbbell, Droplets } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
 import WaterTracker from "../components/WaterTracker";
-import { useWater } from "../hooks/useWater";
+import { useWater } from "../hooks/useWaterTracker";
 
 function Dashboard() {
   const { darkMode } = useTheme();
