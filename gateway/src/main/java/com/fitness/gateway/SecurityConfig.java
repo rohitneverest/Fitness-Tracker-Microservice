@@ -39,7 +39,7 @@ public class SecurityConfig {
 
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        config.setAllowedOrigins(List.of("https://fitai.netlify.app"));
 
         config.setAllowedMethods(List.of(
                 "GET",
