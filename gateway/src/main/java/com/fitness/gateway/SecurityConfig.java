@@ -41,7 +41,8 @@ public class SecurityConfig {
 
         config.setAllowedOrigins(List.of(
                 "http://localhost:5173",
-                "https://fitfeat.netlify.app"
+                "https://fitfeat.netlify.app",
+                "https://fitnessai-nspa.onrender.com"
         ));
 
         config.setAllowedMethods(List.of(
