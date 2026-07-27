@@ -1,3 +1,7 @@
+
+# https://fitnessai-nspa.onrender.com
+
+
 # 🏋️ AI Fitness Tracker
 
 An AI-powered Fitness Tracker built using **Spring Boot Microservices**, **React**, **Keycloak OAuth2**, **RabbitMQ**, **MongoDB**, **MySQL**, and **Large Language Models (LLMs)** to provide personalized fitness recommendations.
