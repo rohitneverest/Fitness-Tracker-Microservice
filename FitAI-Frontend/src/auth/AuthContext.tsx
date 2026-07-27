@@ -4,6 +4,7 @@ import keycloak from "./keycloak";
 
 interface AuthContextType {
   authenticated: boolean;
+  initialized: boolean;
   token: string | undefined;
   username: string;
   login: () => void;
@@ -18,20 +19,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
   const [token, setToken] = useState<string | undefined>(keycloak.token);
   const [username, setUsername] = useState("");
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    setAuthenticated(!!keycloak.authenticated);
-    setToken(keycloak.token);
+    const updateAuth = () => {
+      setAuthenticated(!!keycloak.authenticated);
+      setToken(keycloak.token);
 
-    setUsername(
-      (keycloak.tokenParsed?.preferred_username as string) ||
-        (keycloak.tokenParsed?.name as string) ||
-        "",
-    );
+      setUsername(
+        (keycloak.tokenParsed?.preferred_username as string) ||
+          (keycloak.tokenParsed?.name as string) ||
+          "",
+      );
 
-    console.log("Authenticated:", keycloak.authenticated);
-    console.log("Access Token:", keycloak.token);
-    console.log("Token Parsed:", keycloak.tokenParsed);
+      setInitialized(true);
+    };
+
+    updateAuth();
+
+    keycloak.onAuthSuccess = updateAuth;
+    keycloak.onAuthRefreshSuccess = updateAuth;
+    keycloak.onAuthLogout = updateAuth;
   }, []);
 
   const login = () => keycloak.login();
@@ -45,6 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         authenticated,
+        initialized,
         token,
         username,
         login,
