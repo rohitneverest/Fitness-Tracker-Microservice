@@ -31,14 +31,82 @@ function Profile() {
 
   if (isLoading)
     return (
-      <h2 className={darkMode ? "text-white" : "text-slate-900"}>Loading...</h2>
+      <div
+        className={`flex h-screen flex-col items-center justify-center transition-colors duration-300 ${
+          darkMode
+            ? "bg-gradient-to-br from-blue-950 via-slate-900 to-slate-950 text-white"
+            : "bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-100 text-slate-900"
+        }`}
+      >
+        <div className="animate-bounce">
+          <Dumbbell
+            size={60}
+            className={darkMode ? "text-cyan-400" : "text-blue-600"}
+          />
+        </div>
+
+        <h1 className="mt-6 text-3xl font-bold tracking-wide">Fitness AI</h1>
+
+        <p className={darkMode ? "mt-2 text-slate-300" : "mt-2 text-slate-600"}>
+          Fetching your profile...
+        </p>
+
+        <div
+          className={`mt-8 h-2 w-56 overflow-hidden rounded-full ${
+            darkMode ? "bg-slate-700" : "bg-slate-300"
+          }`}
+        >
+          <div
+            className={`h-full w-1/2 animate-pulse rounded-full ${
+              darkMode ? "bg-cyan-400" : "bg-blue-600"
+            }`}
+          />
+        </div>
+      </div>
     );
 
   if (error)
     return (
-      <h2 className={darkMode ? "text-white" : "text-slate-900"}>
-        Something went wrong.
-      </h2>
+      <div
+        className={`flex h-screen flex-col items-center justify-center px-6 text-center transition-colors duration-300 ${
+          darkMode
+            ? "bg-gradient-to-br from-blue-950 via-slate-900 to-slate-950 text-white"
+            : "bg-gradient-to-br from-slate-50 via-red-50 to-orange-100 text-slate-900"
+        }`}
+      >
+        <div
+          className={`rounded-full p-5 ${
+            darkMode ? "bg-red-500/15" : "bg-red-100"
+          }`}
+        >
+          <Dumbbell
+            size={60}
+            className={darkMode ? "text-red-400" : "text-red-600"}
+          />
+        </div>
+
+        <h1 className="mt-6 text-3xl font-bold">Oops!</h1>
+
+        <p
+          className={
+            darkMode
+              ? "mt-3 max-w-md text-slate-300"
+              : "mt-3 max-w-md text-slate-600"
+          }
+        >
+          We couldn't load your profile right now.
+        </p>
+
+        <p
+          className={
+            darkMode
+              ? "mt-1 text-sm text-slate-500"
+              : "mt-1 text-sm text-slate-500"
+          }
+        >
+          Please try again in a few moments.
+        </p>
+      </div>
     );
 
   const startEditing = () => {

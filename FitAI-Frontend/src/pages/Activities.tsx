@@ -102,17 +102,6 @@ function Activities() {
         >
           Please try again in a few moments.
         </p>
-
-        <button
-          onClick={() => window.location.reload()}
-          className={`mt-8 rounded-lg px-6 py-3 font-semibold transition ${
-            darkMode
-              ? "bg-cyan-500 text-slate-900 hover:bg-cyan-400"
-              : "bg-blue-600 text-white hover:bg-blue-700"
-          }`}
-        >
-          Try Again
-        </button>
       </div>
     );
 
