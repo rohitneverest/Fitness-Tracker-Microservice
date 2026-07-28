@@ -7,11 +7,7 @@ interface Props {
 }
 
 function ProtectedRoute({ children }: Props) {
-  const { authenticated, initialized } = useAuth();
-
-  if (!initialized) {
-    return <div>Loading...</div>;
-  }
+  const { authenticated } = useAuth();
 
   if (!authenticated) {
     return <Navigate to="/login" replace />;
