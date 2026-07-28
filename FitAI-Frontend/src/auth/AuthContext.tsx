@@ -42,7 +42,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     keycloak.onAuthLogout = updateAuth;
   }, []);
 
-  const login = () => keycloak.login();
+  const login = () =>
+    keycloak.login({
+      redirectUri: window.location.origin,
+    });
 
   const logout = () =>
     keycloak.logout({
