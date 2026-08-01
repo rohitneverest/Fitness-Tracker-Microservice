@@ -1,12 +1,17 @@
 import axios from "axios";
 import keycloak from "../auth/keycloak";
 
+
+
+console.log("Gateway URL =", import.meta.env.VITE_GATEWAY_URL);
 const api = axios.create({
   baseURL: import.meta.env.VITE_GATEWAY_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
+
+
 
 api.interceptors.request.use(async (config) => {
   if (keycloak.authenticated) {
@@ -21,7 +26,10 @@ api.interceptors.request.use(async (config) => {
     }
   }
 
+  
+
   return config;
 });
+
 
 export default api;
