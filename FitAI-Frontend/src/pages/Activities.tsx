@@ -132,11 +132,11 @@ function Activities() {
       </div>
 
       <div
-        className={`overflow-hidden rounded-xl shadow ${
+        className={`overflow-x-auto rounded-xl shadow ${
           darkMode ? "bg-slate-800" : "bg-white"
         }`}
       >
-        <table className="w-full">
+        <table className="min-w-[750px] w-full">
           <thead
             className={
               darkMode

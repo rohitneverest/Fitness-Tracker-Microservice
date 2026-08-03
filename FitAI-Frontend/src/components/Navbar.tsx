@@ -39,14 +39,6 @@ function Navbar({ setSidebarOpen }: NavbarProps) {
           >
             Dashboard
           </h2>
-
-          <p
-            className={`text-sm md:text-base ${
-              darkMode ? "text-slate-300" : "text-gray-500"
-            }`}
-          >
-            Welcome back 👋
-          </p>
         </div>
       </div>
 

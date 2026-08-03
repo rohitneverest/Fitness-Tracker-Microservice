@@ -1,5 +1,5 @@
 import { Bell, CheckCircle, Droplets } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 import { useNotifications } from "../hooks/useNotification";
 
@@ -7,9 +7,22 @@ function NotificationMenu() {
   const { darkMode } = useTheme();
   const [open, setOpen] = useState(false);
   const notifications = useNotifications();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" ref={menuRef}>
       <button
         onClick={() => setOpen(!open)}
         className={`rounded-full p-2 transition ${
@@ -23,11 +36,10 @@ function NotificationMenu() {
 
       {open && (
         <div
-          className={`absolute right-0 mt-3 w-80 rounded-xl border shadow-xl z-50 ${
-            darkMode
-              ? "border-slate-700 bg-slate-800"
-              : "border-gray-200 bg-white"
-          }`}
+          className={`absolute right-0 mt-3
+  w-[90vw] max-w-sm
+  rounded-xl border shadow-xl z-50
+  ${darkMode ? "border-slate-700 bg-slate-800" : "border-gray-200 bg-white"}`}
         >
           <div
             className={`border-b px-4 py-3 font-semibold ${
