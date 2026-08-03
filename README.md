@@ -1,5 +1,5 @@
 
-# https://fitnessai-nspa.onrender.com
+# https://fitfeat.netlify.app/
 
 
 # 🏋️ AI Fitness Tracker
