@@ -7,6 +7,8 @@ interface AuthContextType {
 
   token: string | undefined;
   username: string;
+  fullName: string;
+
   login: () => void;
   logout: () => void;
 }
@@ -19,6 +21,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
   const [token, setToken] = useState<string | undefined>(keycloak.token);
   const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
 
   useEffect(() => {
     setAuthenticated(!!keycloak.authenticated);
@@ -26,6 +29,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     setUsername(
       (keycloak.tokenParsed?.preferred_username as string) ||
+        (keycloak.tokenParsed?.name as string) ||
+        "",
+    );
+    const firstName = (keycloak.tokenParsed?.given_name as string) || "";
+    const lastName = (keycloak.tokenParsed?.family_name as string) || "";
+
+    setFullName(
+      `${firstName} ${lastName}`.trim() ||
         (keycloak.tokenParsed?.name as string) ||
         "",
     );
@@ -52,6 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         token,
         username,
+        fullName,
         login,
         logout,
       }}

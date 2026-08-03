@@ -8,7 +8,7 @@ import { useSearch } from "../context/SearchContext";
 import { useLocation } from "react-router-dom";
 
 function Navbar() {
-  const { username } = useAuth();
+  const { fullName } = useAuth();
   const { darkMode } = useTheme();
   const { search, setSearch } = useSearch();
   const location = useLocation();
@@ -66,7 +66,7 @@ function Navbar() {
 
         <NotificationMenu />
 
-        <ProfileMenu username={username} />
+        <ProfileMenu username={fullName} />
       </div>
     </header>
   );
