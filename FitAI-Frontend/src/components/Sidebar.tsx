@@ -1,9 +1,14 @@
-import { Home, Activity, Brain, User, LogOut, Dumbbell } from "lucide-react";
+import { Home, Activity, Brain, User, LogOut, Dumbbell, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 
-function Sidebar() {
+interface SidebarProps {
+  sidebarOpen: boolean;
+  setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Sidebar({ sidebarOpen, setSidebarOpen }: SidebarProps) {
   const { logout } = useAuth();
   const { darkMode } = useTheme();
 
@@ -17,53 +22,92 @@ function Sidebar() {
     }`;
 
   return (
-    <aside
-      className={`flex h-screen w-64 flex-col border-r p-5 transition-colors duration-300 ${
-        darkMode ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-white"
-      }`}
-    >
-      <div className="mb-10 flex items-center gap-3">
-        <Dumbbell className="text-blue-500" size={34} />
+    <>
+      {/* Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
 
-        <h1
-          className={`text-2xl font-bold ${
-            darkMode ? "text-white" : "text-slate-800"
-          }`}
-        >
-          FitAI
-        </h1>
-      </div>
-
-      <nav className="flex flex-col gap-3">
-        <NavLink to="/" end className={linkClass}>
-          <Home size={20} />
-          Dashboard
-        </NavLink>
-
-        <NavLink to="/activities" className={linkClass}>
-          <Activity size={20} />
-          Activities
-        </NavLink>
-
-        <NavLink to="/recommendations" className={linkClass}>
-          <Brain size={20} />
-          AI Coach
-        </NavLink>
-
-        <NavLink to="/profile" className={linkClass}>
-          <User size={20} />
-          Profile
-        </NavLink>
-      </nav>
-
-      <button
-        onClick={logout}
-        className="mt-auto flex items-center gap-3 rounded-lg bg-red-500 px-4 py-3 text-white transition hover:bg-red-600"
+      <aside
+        className={`fixed lg:static z-40 flex h-screen w-64 flex-col border-r p-5 transition-all duration-300
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0
+        ${
+          darkMode
+            ? "border-slate-700 bg-slate-900"
+            : "border-slate-200 bg-white"
+        }`}
       >
-        <LogOut size={20} />
-        Logout
-      </button>
-    </aside>
+        {/* Close Button (Mobile) */}
+        <button
+          className="mb-4 self-end lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <X />
+        </button>
+
+        <div className="mb-10 flex items-center gap-3">
+          <Dumbbell className="text-blue-500" size={34} />
+
+          <h1
+            className={`text-2xl font-bold ${
+              darkMode ? "text-white" : "text-slate-800"
+            }`}
+          >
+            FitAI
+          </h1>
+        </div>
+
+        <nav className="flex flex-col gap-3">
+          <NavLink
+            to="/"
+            end
+            className={linkClass}
+            onClick={() => setSidebarOpen(false)}
+          >
+            <Home size={20} />
+            Dashboard
+          </NavLink>
+
+          <NavLink
+            to="/activities"
+            className={linkClass}
+            onClick={() => setSidebarOpen(false)}
+          >
+            <Activity size={20} />
+            Activities
+          </NavLink>
+
+          <NavLink
+            to="/recommendations"
+            className={linkClass}
+            onClick={() => setSidebarOpen(false)}
+          >
+            <Brain size={20} />
+            AI Coach
+          </NavLink>
+
+          <NavLink
+            to="/profile"
+            className={linkClass}
+            onClick={() => setSidebarOpen(false)}
+          >
+            <User size={20} />
+            Profile
+          </NavLink>
+        </nav>
+
+        <button
+          onClick={logout}
+          className="mt-auto flex items-center gap-3 rounded-lg bg-red-500 px-4 py-3 text-white transition hover:bg-red-600"
+        >
+          <LogOut size={20} />
+          Logout
+        </button>
+      </aside>
+    </>
   );
 }
 
