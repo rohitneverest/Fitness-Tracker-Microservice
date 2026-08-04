@@ -36,10 +36,16 @@ function NotificationMenu() {
 
       {open && (
         <div
-          className={`absolute right-0 mt-3
-  w-[90vw] max-w-sm
-  rounded-xl border shadow-xl z-50
-  ${darkMode ? "border-slate-700 bg-slate-800" : "border-gray-200 bg-white"}`}
+          className={`absolute top-12
+      right-0
+      sm:right-0
+      max-sm:left-1/2
+      max-sm:-translate-x-1/2
+      w-[90vw]
+      sm:w-80
+      rounded-xl border shadow-xl z-50 ${
+        darkMode ? "border-slate-700 bg-slate-800" : "border-gray-200 bg-white"
+      }`}
         >
           <div
             className={`border-b px-4 py-3 font-semibold ${
