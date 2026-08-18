@@ -1,5 +1,6 @@
 
-# https://fitfeat.netlify.app/
+# 🔴 **Demo temporarily unavailable — Render free tier exhausted.** 🔴 
+#      https://fitfeat.netlify.app/
 
 
 # 🏋️ AI Fitness Tracker
